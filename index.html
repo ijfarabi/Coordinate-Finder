@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Coordinate Finder</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+		body{
+			background:#f4f4f4;
+		}
+
+		header, footer, h1, script, div{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<h1>Coordinate Finder</h1>
+<br>
+<div>
+	<button onclick="getLocation()">Find the Coordinates Now</button>
+</div>
+<h1 id="coords"></h1>
+
+<script>
+	var x = document.getElementById('coords');
+
+	function getLocation(){
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(showPosition);
+		} else {
+			x.innerHTML = "Geolocation is not supported";
+		}
+
+		function showPosition(position){
+			//console.log(position.coords.latitude);
+			x.innerHTML = "Latitude: "+ position.coords.latitude + "<br>Longitude: "+ position.coords.longitude;
+		}
+	}
+</script>
+<footer>
+		<br>
+		<p>Coordinate Finder &copy; 2018</p>
+		<p>Made by Ibnul Jaif Farabi</p>
+	</footer>
+</body>
+</html>
